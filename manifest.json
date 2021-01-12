@@ -1,0 +1,16 @@
+{
+  "name": "Test Unitaire Moodle",
+  "version": "1.0",
+  "description": "Copier les tests en pythons depuis les tableaux de résultat des quiz Moodle.",
+  "manifest_version": 2,
+  "icons": {
+    "16": "16.png",
+    "128": "128.png"
+  },
+  "content_scripts": [
+   {
+     "matches": ["https://moodle.cri.epita.fr/mod/quiz/*"],
+     "js": ["contentScript.js"]
+   }
+ ]
+}
