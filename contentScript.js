@@ -1,4 +1,4 @@
-var listDebugExten = document.getElementById("responseform").querySelectorAll("table.coderunner-test-results");
+var listDebugExten = document.querySelectorAll("table.coderunner-test-results");
 var idTempoDebugExten=0;
 function copyDebugPythonExten(id){
     var element=listDebugExten[id];
@@ -39,13 +39,14 @@ function getDebugPythonExten(element){
     var allTest="";
     var title="";
     for (let ii = 0; ii < lignes.length; ii++) {
-        const e = lignes[ii].children[2].children[0].textContent.trim().split(" -> ",2);
+        const e = lignes[ii].children[2].children[0].textContent.trim().split(" = ",2);
         if(title==""){
             var t=e[0].match("^([^(]+)");
             if(t!=null && t.length > 0){
                 title=t[0];
             }
         }
+        console.log(e);
         allTest+='print("[OK]'+e[0]+' -> '+e[1]+'" if '+e[0]+' == '+e[1]+' else "[ERROR]'+e[0]+' -> " + str('+e[0]+') + "\\n'+' '.repeat(8+e[0].length)+'<> '+e[1]+'")\n';
     }
     return 'print("--------------------=============={ '+title+' }==============--------------------")\n'+allTest;
